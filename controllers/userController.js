@@ -69,7 +69,7 @@ const getUsersWithFirms = async(req, res)=>{
     try{
         //Fetch users and populate the firm field //
         const users = await User.find().populate('firm');
-        res.status(200).json(users); // Send users with populated firms as JSON response //
+        res.status(200).json({users}); // Send users with populated firms as JSON response //
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: "Internal server error"})
