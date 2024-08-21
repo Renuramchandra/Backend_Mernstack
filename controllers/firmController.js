@@ -26,6 +26,9 @@ const addFirm = async(req, res)=>{
         if(!user){
             res.status(404).json({message: "User not found"})
         }
+        if(user.firm.length > 0){
+            return res.status(400).json({message: "user can have only one firm"});
+         }
     
         const firm = new Firm({
             firmName, 
@@ -44,6 +47,8 @@ const addFirm = async(req, res)=>{
          user.firm.push(savedFirm)
 
          await user.save()
+
+         
 
         return res.status(200).json({message: 'Firm Added Sucessfully', firmId });
     }catch(error) {
