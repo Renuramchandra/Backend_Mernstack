@@ -60,7 +60,7 @@ const userLogin = async(req,res)=>{
        
 
     } catch (error) {
-        console.log(eror);
+        console.log(error);
         res.status(500).json({ error : "Internal server error"});
         
 
